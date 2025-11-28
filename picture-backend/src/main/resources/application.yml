@@ -33,7 +33,7 @@ knife4j:
       default:
         api-rule: package
         api-rule-resources:
-          - com.yupi.yupicture.interfaces.controller
+          - com.wzb.picturebackend.controller
 ## 对象存储配置（需要从腾讯云获取）
 #cos:
 #  client:

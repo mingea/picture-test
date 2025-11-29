@@ -53,11 +53,14 @@ public class FileManager {
         // 自己拼接文件上传路径，而不是使用原始文件名称，可以增强安全性，时间戳+uuid+文件后缀
         String uploadFilename = String.format("%s_%s.%s", DateUtil.formatDate(new Date()), uuid,
                 FileUtil.getSuffix(originalFilename));
+        // 将路径拼接
         String uploadPath = String.format("/%s/%s", uploadPathPrefix, uploadFilename);
         File file = null;
         try {
             // 上传文件
+            // 创建临时文件
             file = File.createTempFile(uploadPath, null);
+            // 保存文件
             multipartFile.transferTo(file);
             PutObjectResult putObjectResult = cosManager.putPictureObject(uploadPath, file);
             // 获取图片信息对象

@@ -111,16 +111,16 @@ public class PictureServiceImpl extends ServiceImpl<PictureMapper, Picture>
                     .or()
                     .like("introduction", searchText);
         }
-        queryWrapper.eq(ObjUtil.isNotEmpty(id), "id", id)
+        queryWrapper.eq(id !=  null && id > 0, "id", id)
                 .like(StrUtil.isNotEmpty(name), "name", name)
                 .like(StrUtil.isNotEmpty(introduction), "introduction", introduction)
                 .eq(StrUtil.isNotEmpty(category), "category", category)
-                .eq(ObjUtil.isNotEmpty(picSize), "picSize", picSize)
-                .eq(ObjUtil.isNotEmpty(picWidth), "picWidth", picWidth)
-                .eq(ObjUtil.isNotEmpty(picHeight), "picHeight", picHeight)
-                .eq(ObjUtil.isNotEmpty(picScale), "picScale", picScale)
-                .like(ObjUtil.isNotEmpty(picFormat), "picFormat", picFormat)
-                .eq(ObjUtil.isNotEmpty(userId), "userId", userId);
+                .eq(picSize !=  null && picSize > 0, "picSize", picSize)
+                .eq(picWidth !=  null && picWidth > 0, "picWidth", picWidth)
+                .eq(picHeight !=  null && picHeight > 0, "picHeight", picHeight)
+                .eq(picScale !=  null && picScale > 0, "picScale", picScale)
+                .like(StrUtil.isNotEmpty(picFormat), "picFormat", picFormat)
+                .eq(id !=  null && id > 0, "userId", userId);
         // 处理标签
         if (CollUtil.isNotEmpty(tags)) {
             for (String tag : tags) {
@@ -177,10 +177,10 @@ public class PictureServiceImpl extends ServiceImpl<PictureMapper, Picture>
         String url = picture.getUrl();
         String introduction = picture.getIntroduction();
         ThrowUtils.throwIf(ObjUtil.isNull(id), ErrorCode.PARAMS_ERROR,"id不能为空");
-        if (StrUtil.isBlank(url)) {
+        if (StrUtil.isNotBlank(url)) {
             ThrowUtils.throwIf(url.length() > 1024, ErrorCode.PARAMS_ERROR,"url过长");
         }
-        if (StrUtil.isBlank(introduction)) {
+        if (StrUtil.isNotBlank(introduction)) {
             ThrowUtils.throwIf(introduction.length() > 1024, ErrorCode.PARAMS_ERROR,"introduction过长");
         }
     }

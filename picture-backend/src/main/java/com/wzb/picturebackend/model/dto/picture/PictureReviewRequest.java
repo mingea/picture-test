@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class PictureReviewRequest implements Serializable {
 
     /**
-     * id
+     * 审核的图片id
      */
     private Long id;
 

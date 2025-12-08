@@ -61,21 +61,21 @@ public abstract class PictureUploadTemplate {
             PutObjectResult putObjectResult = cosManager.putPictureObject(uploadPath, file);
             // 5. 获取图片信息对象，封装返回结果
             ImageInfo imageInfo = putObjectResult.getCiUploadResult().getOriginalInfo().getImageInfo();
-//            // 获取到图片处理结果
-//            ProcessResults processResults = putObjectResult.getCiUploadResult().getProcessResults();
-//            List<CIObject> objectList = processResults.getObjectList();
-//            if (CollUtil.isNotEmpty(objectList)) {
-//                // 获取压缩之后得到的文件信息
-//                CIObject compressedCiObject = objectList.get(0);
-//                // 缩略图默认等于压缩图
-//                CIObject thumbnailCiObject = compressedCiObject;
-//                // 有生成缩略图，才获取缩略图
-//                if (objectList.size() > 1) {
-//                    thumbnailCiObject = objectList.get(1);
-//                }
-//                // 封装压缩图的返回结果
-//                return buildResult(originalFilename, compressedCiObject, thumbnailCiObject, imageInfo);
-//            }
+            // 获取到图片处理结果
+            ProcessResults processResults = putObjectResult.getCiUploadResult().getProcessResults();
+            List<CIObject> objectList = processResults.getObjectList();
+            if (CollUtil.isNotEmpty(objectList)) {
+                // 获取压缩之后得到的文件信息
+                CIObject compressedCiObject = objectList.get(0);
+                // 缩略图默认等于压缩图
+                CIObject thumbnailCiObject = compressedCiObject;
+                // 有生成缩略图，才获取缩略图
+                if (objectList.size() > 1) {
+                    thumbnailCiObject = objectList.get(1);
+                }
+                // 封装压缩图的返回结果
+                return buildResult(originalFilename, compressedCiObject, thumbnailCiObject, imageInfo);
+            }
             return buildResult(originalFilename, file, uploadPath, imageInfo);
         } catch (Exception e) {
             log.error("图片上传到对象存储失败", e);
@@ -101,6 +101,31 @@ public abstract class PictureUploadTemplate {
      * 处理输入源并生成本地临时文件
      */
     protected abstract void processFile(Object inputSource, File file) throws Exception;
+
+    /**
+     * 封装返回结果
+     *
+     * @param originFilename   原始文件名
+     * @param compressedCiObject 压缩后的对象
+     * @return
+     */
+    private UploadPictureResult buildResult(String originFilename, CIObject compressedCiObject) {
+        UploadPictureResult uploadPictureResult = new UploadPictureResult();
+        int picWidth = compressedCiObject.getWidth();
+        int picHeight = compressedCiObject.getHeight();
+        double picScale = NumberUtil.round(picWidth * 1.0 / picHeight, 2).doubleValue();
+        uploadPictureResult.setPicName(FileUtil.mainName(originFilename));
+        uploadPictureResult.setPicWidth(picWidth);
+        uploadPictureResult.setPicHeight(picHeight);
+        uploadPictureResult.setPicScale(picScale);
+        uploadPictureResult.setPicFormat(compressedCiObject.getFormat());
+        uploadPictureResult.setPicSize(compressedCiObject.getSize().longValue());
+
+        uploadPictureResult.setUrl(cosClientConfig.getHost() + "/" + compressedCiObject.getKey());
+        return uploadPictureResult;
+    }
+
+
 
     /**
      * 封装返回结果

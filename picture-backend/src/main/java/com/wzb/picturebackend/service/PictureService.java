@@ -10,6 +10,7 @@ import com.wzb.picturebackend.model.entity.Picture;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.wzb.picturebackend.model.entity.User;
 import com.wzb.picturebackend.model.vo.PictureVO;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -83,4 +84,6 @@ public interface PictureService extends IService<Picture> {
     Integer uploadPictureByBatch(PictureUploadByBatchRequest pictureUploadByBatchRequest,
                                  User loginUser);
 
+    @Async
+    void clearPictureFile(Picture oldPicture);
 }

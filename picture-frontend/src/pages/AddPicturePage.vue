@@ -21,9 +21,9 @@
     <div v-if="picture" class="edit-bar">
       <a-space size="middle">
         <a-button :icon="h(EditOutlined)" @click="doEditPicture">编辑图片</a-button>
-        <a-button type="primary" :icon="h(FullscreenOutlined)" @click="doImagePainting">
-          AI 扩图
-        </a-button>
+<!--        <a-button type="primary" :icon="h(FullscreenOutlined)" @click="doImagePainting">-->
+<!--          AI 扩图-->
+<!--        </a-button>-->
       </a-space>
       <ImageCropper
         ref="imageCropperRef"

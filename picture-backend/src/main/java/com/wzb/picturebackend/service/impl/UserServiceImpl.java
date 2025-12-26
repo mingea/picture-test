@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.wzb.picturebackend.constant.UserConstant;
 import com.wzb.picturebackend.exception.BusinessException;
 import com.wzb.picturebackend.exception.ErrorCode;
+import com.wzb.picturebackend.manager.auth.StpKit;
 import com.wzb.picturebackend.model.dto.user.UserQueryRequest;
 import com.wzb.picturebackend.model.dto.user.UserRegisterRequest;
 import com.wzb.picturebackend.model.entity.User;
@@ -25,6 +26,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static com.wzb.picturebackend.constant.UserConstant.USER_LOGIN_STATE;
 
 /**
 * @author leoneve
@@ -109,7 +112,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
             throw new BusinessException(ErrorCode.PARAMS_ERROR,"用户不存在或密码错误");
         }
         // 4. 保存用户的登录态
-        request.getSession().setAttribute(UserConstant.USER_LOGIN_STATE, user);
+        request.getSession().setAttribute(USER_LOGIN_STATE, user);
+        // 记录用户登录态到 Sa-token，便于空间鉴权时使用，注意保证该用户信息与 SpringSession 中的信息过期时间一致
+        StpKit.SPACE.login(user.getId());
+        StpKit.SPACE.getSession().set(UserConstant.USER_LOGIN_STATE, user);
         return this.getLoginUserVO(user);
     }
 
@@ -145,7 +151,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
 
     @Override
     public User getLoginUser(HttpServletRequest request) {
-        Object userObject = request.getSession().getAttribute(UserConstant.USER_LOGIN_STATE);
+        Object userObject = request.getSession().getAttribute(USER_LOGIN_STATE);
+
         User currentUser = (User) userObject;
         if (currentUser == null || currentUser.getId() == null) {
             throw new BusinessException(ErrorCode.NOT_LOGIN_ERROR);
@@ -162,13 +169,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     @Override
     public boolean userLogout(HttpServletRequest request) {
         // 判断登录态
-        Object userObject = request.getSession().getAttribute(UserConstant.USER_LOGIN_STATE);
+        Object userObject = request.getSession().getAttribute(USER_LOGIN_STATE);
         User currentUser = (User) userObject;
         if (currentUser == null || currentUser.getId() == null) {
             throw new BusinessException(ErrorCode.NOT_LOGIN_ERROR);
         }
         // 移除登录态
-        request.getSession().removeAttribute(UserConstant.USER_LOGIN_STATE);
+        request.getSession().removeAttribute(USER_LOGIN_STATE);
         return true;
     }
 

@@ -144,12 +144,64 @@ const doLogout = async () => {
 }
 
 .title {
-  color: black;
   font-size: 18px;
   margin-left: 16px;
+  font-weight: 600;
+  background: linear-gradient(90deg, #6366f1, #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .logo {
   height: 48px;
+}
+
+#globalHeader :deep(.ant-menu-horizontal) {
+  background: transparent;
+  border-bottom: none;
+}
+
+#globalHeader :deep(.ant-menu-item) {
+  color: var(--tech-text-secondary, #a1a1aa);
+}
+
+#globalHeader :deep(.ant-menu-item:hover),
+#globalHeader :deep(.ant-menu-item-selected) {
+  color: var(--tech-primary-hover, #818cf8) !important;
+}
+
+#globalHeader :deep(.ant-menu-item-selected::after) {
+  border-bottom-color: var(--tech-primary, #6366f1) !important;
+}
+
+.user-login-status {
+  color: var(--tech-text, #e4e4e7);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.user-login-status :deep(.ant-avatar) {
+  border: 2px solid var(--tech-border, #2d2d44);
+  transition: border-color 0.3s ease;
+}
+
+.user-login-status :deep(.ant-avatar:hover) {
+  border-color: var(--tech-primary, #6366f1);
+}
+
+.user-login-status :deep(.ant-space) {
+  cursor: pointer;
+}
+
+.user-login-status :deep(.ant-btn-primary) {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  border: none;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+}
+
+.user-login-status :deep(.ant-btn-primary:hover) {
+  box-shadow: 0 0 25px rgba(99, 102, 241, 0.5);
 }
 </style>

@@ -253,8 +253,86 @@ watchEffect(() => {
   margin: 0 auto;
 }
 
+#addPicturePage h2 {
+  color: var(--tech-text, #e4e4e7);
+  margin-bottom: 16px;
+}
+
 #addPicturePage .edit-bar {
   text-align: center;
   margin: 16px 0;
+}
+
+#addPicturePage :deep(.ant-tabs-nav::before) {
+  border-bottom-color: var(--tech-border, #2d2d44);
+}
+
+#addPicturePage :deep(.ant-tabs-tab) {
+  color: var(--tech-text-secondary, #a1a1aa);
+}
+
+#addPicturePage :deep(.ant-tabs-tab-active .ant-tabs-tab-btn) {
+  color: var(--tech-primary, #6366f1) !important;
+}
+
+#addPicturePage :deep(.ant-tabs-ink-bar) {
+  background: linear-gradient(90deg, #6366f1, #a855f7);
+}
+
+#addPicturePage :deep(.ant-form-item-label > label) {
+  color: var(--tech-text, #e4e4e7);
+}
+
+#addPicturePage :deep(.ant-input),
+#addPicturePage :deep(.ant-input-affix-wrapper),
+#addPicturePage :deep(.ant-select-selector) {
+  background: var(--tech-bg-container, #1a1a2e) !important;
+  border-color: var(--tech-border, #2d2d44) !important;
+  color: var(--tech-text, #e4e4e7);
+}
+
+#addPicturePage :deep(.ant-input:hover),
+#addPicturePage :deep(.ant-input:focus),
+#addPicturePage :deep(.ant-input-affix-wrapper:hover),
+#addPicturePage :deep(.ant-select-selector:hover) {
+  border-color: var(--tech-primary, #6366f1) !important;
+}
+
+#addPicturePage :deep(.ant-btn-primary) {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  border: none;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+}
+
+#addPicturePage :deep(.ant-btn-primary:hover) {
+  box-shadow: 0 0 25px rgba(99, 102, 241, 0.5);
+}
+
+#addPicturePage :deep(.ant-btn-default) {
+  background: var(--tech-bg-elevated, #16213e);
+  border-color: var(--tech-border, #2d2d44);
+  color: var(--tech-text, #e4e4e7);
+}
+
+#addPicturePage :deep(.ant-btn-default:hover) {
+  border-color: var(--tech-primary, #6366f1);
+  color: var(--tech-primary, #6366f1);
+}
+
+#addPicturePage :deep(.ant-upload-drag) {
+  background: var(--tech-bg-container, #1a1a2e) !important;
+  border-color: var(--tech-border, #2d2d44) !important;
+}
+
+#addPicturePage :deep(.ant-upload-drag:hover) {
+  border-color: var(--tech-primary, #6366f1) !important;
+}
+
+#addPicturePage :deep(.ant-upload-text) {
+  color: var(--tech-text, #e4e4e7) !important;
+}
+
+#addPicturePage :deep(.ant-upload-hint) {
+  color: var(--tech-text-secondary, #a1a1aa) !important;
 }
 </style>

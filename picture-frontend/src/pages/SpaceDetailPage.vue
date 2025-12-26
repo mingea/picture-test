@@ -239,4 +239,68 @@ watch(
 #spaceDetailPage {
   margin-bottom: 16px;
 }
+
+#spaceDetailPage h2 {
+  color: var(--tech-text, #e4e4e7);
+  margin: 0;
+}
+
+#spaceDetailPage :deep(.ant-btn-primary) {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  border: none;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+}
+
+#spaceDetailPage :deep(.ant-btn-primary:hover) {
+  box-shadow: 0 0 25px rgba(99, 102, 241, 0.5);
+}
+
+#spaceDetailPage :deep(.ant-btn-primary.ant-btn-background-ghost) {
+  background: transparent;
+  border: 1px solid var(--tech-primary, #6366f1);
+  color: var(--tech-primary, #6366f1);
+  box-shadow: none;
+}
+
+#spaceDetailPage :deep(.ant-btn-primary.ant-btn-background-ghost:hover) {
+  border-color: var(--tech-primary-hover, #818cf8);
+  color: var(--tech-primary-hover, #818cf8);
+}
+
+#spaceDetailPage :deep(.ant-btn-default) {
+  background: var(--tech-bg-elevated, #16213e);
+  border-color: var(--tech-border, #2d2d44);
+  color: var(--tech-text, #e4e4e7);
+}
+
+#spaceDetailPage :deep(.ant-btn-default:hover) {
+  border-color: var(--tech-primary, #6366f1);
+  color: var(--tech-primary, #6366f1);
+}
+
+#spaceDetailPage :deep(.ant-progress-circle .ant-progress-text) {
+  color: var(--tech-text, #e4e4e7);
+}
+
+#spaceDetailPage :deep(.ant-form-item-label > label) {
+  color: var(--tech-text, #e4e4e7);
+}
+
+#spaceDetailPage :deep(.ant-pagination-item) {
+  background: var(--tech-bg-container, #1a1a2e);
+  border-color: var(--tech-border, #2d2d44);
+}
+
+#spaceDetailPage :deep(.ant-pagination-item a) {
+  color: var(--tech-text-secondary, #a1a1aa);
+}
+
+#spaceDetailPage :deep(.ant-pagination-item-active) {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: var(--tech-primary, #6366f1);
+}
+
+#spaceDetailPage :deep(.ant-pagination-item-active a) {
+  color: var(--tech-primary, #6366f1);
+}
 </style>

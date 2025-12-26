@@ -187,4 +187,94 @@ const doShare = () => {
 #pictureDetailPage {
   margin-bottom: 16px;
 }
+
+#pictureDetailPage :deep(.ant-card) {
+  background: var(--tech-bg-container, #1a1a2e);
+  border: 1px solid var(--tech-border, #2d2d44);
+  border-radius: 12px;
+}
+
+#pictureDetailPage :deep(.ant-card-head) {
+  border-bottom-color: var(--tech-border, #2d2d44);
+  color: var(--tech-text, #e4e4e7);
+}
+
+#pictureDetailPage :deep(.ant-card-head-title) {
+  color: var(--tech-text, #e4e4e7);
+}
+
+#pictureDetailPage :deep(.ant-descriptions-item-label) {
+  color: var(--tech-text-secondary, #a1a1aa);
+}
+
+#pictureDetailPage :deep(.ant-descriptions-item-content) {
+  color: var(--tech-text, #e4e4e7);
+}
+
+#pictureDetailPage :deep(.ant-tag) {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: rgba(99, 102, 241, 0.3);
+  color: var(--tech-primary-hover, #818cf8);
+}
+
+#pictureDetailPage :deep(.ant-btn-primary) {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  border: none;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+}
+
+#pictureDetailPage :deep(.ant-btn-primary:hover) {
+  box-shadow: 0 0 25px rgba(99, 102, 241, 0.5);
+}
+
+#pictureDetailPage :deep(.ant-btn-primary.ant-btn-background-ghost) {
+  background: transparent;
+  border: 1px solid var(--tech-primary, #6366f1);
+  color: var(--tech-primary, #6366f1);
+  box-shadow: none;
+}
+
+#pictureDetailPage :deep(.ant-btn-primary.ant-btn-background-ghost:hover) {
+  border-color: var(--tech-primary-hover, #818cf8);
+  color: var(--tech-primary-hover, #818cf8);
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
+}
+
+#pictureDetailPage :deep(.ant-btn-default) {
+  background: var(--tech-bg-elevated, #16213e);
+  border-color: var(--tech-border, #2d2d44);
+  color: var(--tech-text, #e4e4e7);
+}
+
+#pictureDetailPage :deep(.ant-btn-default:hover) {
+  border-color: var(--tech-primary, #6366f1);
+  color: var(--tech-primary, #6366f1);
+}
+
+#pictureDetailPage :deep(.ant-btn-dangerous) {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #ef4444;
+}
+
+#pictureDetailPage :deep(.ant-btn-dangerous:hover) {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #ef4444;
+}
+
+#pictureDetailPage :deep(.ant-image) {
+  display: flex;
+  justify-content: center;
+  background: var(--tech-bg-elevated, #16213e);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+#pictureDetailPage :deep(.ant-avatar) {
+  border: 2px solid var(--tech-border, #2d2d44);
+}
+
+#pictureDetailPage :deep(.ant-space) {
+  margin-top: 16px;
+}
 </style>

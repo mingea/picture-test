@@ -7,6 +7,8 @@ import Antd from 'ant-design-vue'
 import VueCropper from 'vue-cropper';
 import 'vue-cropper/dist/index.css'
 import 'ant-design-vue/dist/reset.css'
+import '@/styles/dark-theme.css'
+import '@/styles/tech-effects.css'
 import '@/access.ts'
 
 const app = createApp(App)

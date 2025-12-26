@@ -135,4 +135,85 @@ const doShare = (picture, e) => {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.picture-list :deep(.ant-card) {
+  background: var(--tech-bg-container, #1a1a2e);
+  border: 1px solid var(--tech-border, #2d2d44);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.picture-list :deep(.ant-card:hover) {
+  border-color: rgba(99, 102, 241, 0.5);
+  box-shadow:
+    0 0 25px rgba(99, 102, 241, 0.15),
+    0 0 50px rgba(168, 85, 247, 0.1);
+  transform: translateY(-4px);
+}
+
+.picture-list :deep(.ant-card-cover) {
+  overflow: hidden;
+}
+
+.picture-list :deep(.ant-card-cover img) {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.picture-list :deep(.ant-card:hover .ant-card-cover img) {
+  transform: scale(1.08);
+}
+
+.picture-list :deep(.ant-card-body) {
+  padding: 12px 16px;
+}
+
+.picture-list :deep(.ant-card-meta-title) {
+  color: var(--tech-text, #e4e4e7);
+  font-size: 14px;
+}
+
+.picture-list :deep(.ant-card-meta-description) {
+  margin-top: 8px;
+}
+
+.picture-list :deep(.ant-tag) {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: rgba(99, 102, 241, 0.3);
+  color: var(--tech-primary-hover, #818cf8);
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.picture-list :deep(.ant-tag-green) {
+  background: rgba(34, 197, 94, 0.1);
+  border-color: rgba(34, 197, 94, 0.3);
+  color: #22c55e;
+}
+
+.picture-list :deep(.ant-card-actions) {
+  background: var(--tech-bg-elevated, #16213e);
+  border-top: 1px solid var(--tech-border, #2d2d44);
+}
+
+.picture-list :deep(.ant-card-actions > li) {
+  color: var(--tech-text-secondary, #a1a1aa);
+  transition: color 0.3s ease;
+}
+
+.picture-list :deep(.ant-card-actions > li:hover) {
+  color: var(--tech-primary, #6366f1);
+}
+
+.picture-list :deep(.ant-card-actions > li:not(:last-child)) {
+  border-right-color: var(--tech-border, #2d2d44);
+}
+
+.picture-list :deep(.ant-list-item) {
+  padding: 0 0 16px 0 !important;
+}
+
+.picture-list :deep(.ant-empty-description) {
+  color: var(--tech-text-tertiary, #71717a);
+}
+</style>

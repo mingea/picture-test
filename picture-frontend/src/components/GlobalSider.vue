@@ -105,6 +105,39 @@ const doMenuClick = ({ key }) => {
 
 <style scoped>
 #globalSider .ant-layout-sider {
-  background: none;
+  background: transparent;
+}
+
+#globalSider :deep(.ant-menu) {
+  background: transparent;
+}
+
+#globalSider :deep(.ant-menu-item) {
+  color: var(--tech-text-secondary, #a1a1aa);
+  margin: 4px 8px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+#globalSider :deep(.ant-menu-item:hover) {
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--tech-text, #e4e4e7);
+}
+
+#globalSider :deep(.ant-menu-item-selected) {
+  background: rgba(99, 102, 241, 0.15) !important;
+  color: var(--tech-primary-hover, #818cf8) !important;
+}
+
+#globalSider :deep(.ant-menu-item-group-title) {
+  color: var(--tech-text-tertiary, #71717a);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-left: 16px;
+}
+
+#globalSider :deep(.ant-menu-inline .ant-menu-item::after) {
+  border-right-color: var(--tech-primary, #6366f1);
 }
 </style>

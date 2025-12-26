@@ -153,3 +153,78 @@ const doDelete = async (id: string) => {
   }
 }
 </script>
+
+<style scoped>
+#userManagePage :deep(.ant-form-item-label > label) {
+  color: var(--tech-text, #e4e4e7);
+}
+
+#userManagePage :deep(.ant-input) {
+  background: var(--tech-bg-container, #1a1a2e);
+  border-color: var(--tech-border, #2d2d44);
+  color: var(--tech-text, #e4e4e7);
+}
+
+#userManagePage :deep(.ant-input:hover),
+#userManagePage :deep(.ant-input:focus) {
+  border-color: var(--tech-primary, #6366f1);
+}
+
+#userManagePage :deep(.ant-btn-primary) {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  border: none;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+}
+
+#userManagePage :deep(.ant-btn-primary:hover) {
+  box-shadow: 0 0 25px rgba(99, 102, 241, 0.5);
+}
+
+#userManagePage :deep(.ant-table) {
+  background: var(--tech-bg-container, #1a1a2e);
+}
+
+#userManagePage :deep(.ant-table-thead > tr > th) {
+  background: var(--tech-bg-elevated, #16213e);
+  border-color: var(--tech-border, #2d2d44);
+  color: var(--tech-text, #e4e4e7);
+}
+
+#userManagePage :deep(.ant-table-tbody > tr > td) {
+  border-color: var(--tech-border, #2d2d44);
+  color: var(--tech-text, #e4e4e7);
+}
+
+#userManagePage :deep(.ant-table-tbody > tr:hover > td) {
+  background: rgba(99, 102, 241, 0.08);
+}
+
+#userManagePage :deep(.ant-pagination-item) {
+  background: var(--tech-bg-container, #1a1a2e);
+  border-color: var(--tech-border, #2d2d44);
+}
+
+#userManagePage :deep(.ant-pagination-item a) {
+  color: var(--tech-text-secondary, #a1a1aa);
+}
+
+#userManagePage :deep(.ant-pagination-item-active) {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: var(--tech-primary, #6366f1);
+}
+
+#userManagePage :deep(.ant-pagination-item-active a) {
+  color: var(--tech-primary, #6366f1);
+}
+
+#userManagePage :deep(.ant-btn-dangerous) {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #ef4444;
+}
+
+#userManagePage :deep(.ant-btn-dangerous:hover) {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #ef4444;
+}
+</style>

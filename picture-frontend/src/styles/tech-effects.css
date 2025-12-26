@@ -1,0 +1,437 @@
+/* ========================================
+   科技感特效样式
+   ======================================== */
+
+/* ========================================
+   卡片发光效果
+   ======================================== */
+
+.tech-card-glow {
+  position: relative;
+  background: var(--tech-bg-container);
+  border: 1px solid var(--tech-border);
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.tech-card-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 12px;
+  padding: 1px;
+  background: var(--tech-gradient);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.tech-card-glow:hover::before {
+  opacity: 1;
+}
+
+.tech-card-glow:hover {
+  box-shadow:
+    0 0 30px var(--tech-glow-light),
+    0 0 60px rgba(168, 85, 247, 0.1);
+  transform: translateY(-4px);
+}
+
+/* ========================================
+   按钮发光效果
+   ======================================== */
+
+.tech-button-glow {
+  background: var(--tech-gradient) !important;
+  border: none !important;
+  box-shadow: 0 0 20px var(--tech-glow);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-button-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.tech-button-glow:hover::before {
+  left: 100%;
+}
+
+.tech-button-glow:hover {
+  box-shadow:
+    0 0 30px var(--tech-glow),
+    0 0 50px rgba(168, 85, 247, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   输入框聚焦发光
+   ======================================== */
+
+.tech-input-glow {
+  transition: all 0.3s ease;
+}
+
+.tech-input-glow:focus,
+.tech-input-glow:focus-within {
+  border-color: var(--tech-primary) !important;
+  box-shadow:
+    0 0 0 2px var(--tech-glow-light),
+    0 0 20px var(--tech-glow-light) !important;
+}
+
+/* ========================================
+   渐变文字效果
+   ======================================== */
+
+.tech-gradient-text {
+  background: var(--tech-gradient-text);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+}
+
+/* 静态渐变文字 */
+.tech-gradient-text-static {
+  background: var(--tech-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ========================================
+   脉冲光环效果
+   ======================================== */
+
+.tech-pulse {
+  animation: techPulse 2s ease-in-out infinite;
+}
+
+@keyframes techPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 var(--tech-glow);
+  }
+  50% {
+    box-shadow: 0 0 0 15px transparent;
+  }
+}
+
+/* ========================================
+   边框呼吸灯效果
+   ======================================== */
+
+.tech-border-breathe {
+  animation: borderBreathe 2s ease-in-out infinite;
+}
+
+@keyframes borderBreathe {
+  0%, 100% {
+    border-color: var(--tech-border);
+  }
+  50% {
+    border-color: var(--tech-primary);
+  }
+}
+
+/* ========================================
+   网格背景
+   ======================================== */
+
+.tech-grid-bg {
+  background-image:
+    linear-gradient(var(--tech-border-secondary) 1px, transparent 1px),
+    linear-gradient(90deg, var(--tech-border-secondary) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* ========================================
+   粒子背景效果（用于登录页）
+   ======================================== */
+
+.tech-particles-bg {
+  position: relative;
+  overflow: hidden;
+  background: var(--tech-bg-layout);
+}
+
+.tech-particles-bg::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(99, 102, 241, 0.08) 0%, transparent 30%),
+    radial-gradient(circle at 60% 60%, rgba(168, 85, 247, 0.08) 0%, transparent 30%);
+  animation: particleFloat 30s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* ========================================
+   扫光效果
+   ======================================== */
+
+.tech-scan-line {
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-scan-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(99, 102, 241, 0.1),
+    transparent
+  );
+  animation: scanLine 3s ease-in-out infinite;
+}
+
+@keyframes scanLine {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+/* ========================================
+   悬浮效果
+   ======================================== */
+
+.tech-float {
+  animation: techFloat 3s ease-in-out infinite;
+}
+
+@keyframes techFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ========================================
+   图片容器效果
+   ======================================== */
+
+.tech-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.tech-image-container img {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tech-image-container:hover img {
+  transform: scale(1.05);
+}
+
+.tech-image-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 60%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.tech-image-container:hover::after {
+  opacity: 1;
+}
+
+/* ========================================
+   标签动画
+   ======================================== */
+
+.tech-tag {
+  transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--tech-glow-light);
+}
+
+/* ========================================
+   加载动画
+   ======================================== */
+
+.tech-loading {
+  position: relative;
+}
+
+.tech-loading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--tech-gradient);
+  animation: loadingBar 1.5s ease-in-out infinite;
+}
+
+@keyframes loadingBar {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  50% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  50.01% {
+    transform-origin: right;
+  }
+  100% {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+}
+
+/* ========================================
+   装饰线条
+   ======================================== */
+
+.tech-decoration-line {
+  position: relative;
+  display: inline-block;
+}
+
+.tech-decoration-line::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--tech-gradient);
+  border-radius: 2px;
+}
+
+/* ========================================
+   玻璃拟态效果
+   ======================================== */
+
+.tech-glass {
+  background: rgba(26, 26, 46, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+/* ========================================
+   霓虹文字效果
+   ======================================== */
+
+.tech-neon-text {
+  color: var(--tech-primary);
+  text-shadow:
+    0 0 5px var(--tech-primary),
+    0 0 10px var(--tech-primary),
+    0 0 20px var(--tech-primary),
+    0 0 40px var(--tech-primary);
+}
+
+/* ========================================
+   图标旋转效果
+   ======================================== */
+
+.tech-icon-spin:hover {
+  animation: iconSpin 0.5s ease;
+}
+
+@keyframes iconSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========================================
+   波纹效果
+   ======================================== */
+
+.tech-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(99, 102, 241, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.tech-ripple:active::after {
+  width: 300px;
+  height: 300px;
+}

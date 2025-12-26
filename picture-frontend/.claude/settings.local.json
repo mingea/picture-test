@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(npm run type-check:*)",
+      "Bash(timeout 15 npm run dev:*)"
+    ]
+  }
+}
